@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Usage:
+nb MESSAGE ...
+"""
+
+import logging
+import docopt
+
+args = docopt.docopt(__doc__)
+logging.basicConfig(format='%(asctime)s %(message)s',
+                    level=logging.INFO, filename='/vagrant/Dropbox/log')
+logging.info(' '.join(args['MESSAGE']))
