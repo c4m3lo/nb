@@ -2,13 +2,27 @@
 # -*- coding: utf-8 -*-
 """
 Usage:
-nb MESSAGE ...
+  nb -l
+  nb <message>
+  nb -h
+
+Options:
+  -f <file>   use this file [default: /vagrant/Dropbox/log]
+  -l          list all previous logs
+  -h          show this help screen
 """
 
+import os
 import logging
 import docopt
 
 args = docopt.docopt(__doc__)
+
+more = 'more'
+
+if args['-l']:
+    os.execlp(more, more, args['-f'])
+
 logging.basicConfig(format='%(asctime)s %(message)s',
-                    level=logging.INFO, filename='/vagrant/Dropbox/log')
-logging.info(' '.join(args['MESSAGE']))
+                    level=logging.INFO, filename=args['-f'])
+logging.info(args['<message>'])
