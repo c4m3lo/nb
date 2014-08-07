@@ -7,7 +7,7 @@ Usage:
   nb -h
 
 Options:
-  -f <file>   use this file [default: /vagrant/Dropbox/log]
+  -f <file>   use this file [default: /media/sf_vagrant-root/log]
   -l          list all previous logs
   -h          show this help screen
 """
@@ -18,7 +18,7 @@ import docopt
 
 args = docopt.docopt(__doc__)
 
-more = 'more'
+more = 'less'
 
 if args['-l']:
     os.execlp(more, more, args['-f'])
